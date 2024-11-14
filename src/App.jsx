@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import { v4 as uuidv4 } from 'uuid';
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-
+import { MdAddTask } from "react-icons/md";
 
 function App() {
   const [todo, setTodo] = useState("")
@@ -69,23 +69,23 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <div className="container mx-auto bg-gray-500 w-1/2 text-white text-lg my-5 rounded-xl p-5 min-h-[80vh] ">
+      <div className="mx-3 md:container md:mx-auto bg-gray-500 md:w-1/2 text-white text-lg my-5 rounded-xl p-5 min-h-[80vh] ">
       <h2 className='text-xl font-bold flex justify-center'>Daily Tasks - Manage your daily tasks at one place</h2>
         <div className="addtodo my-5 flex flex-col gap-3">
-          <h2 className='font-bold'>Add a Todo</h2>
-          <input onChange={handleChange} value={todo} className=' rounded-xl text-green-900 w-full' type="text" />
+          <h2 className='font-bold my-4'>Add a Todo</h2>
+          <input onChange={handleChange} value={todo} className=' rounded-xl text-green-900 w-full px-3' type="text" />
           <button onClick={handleAdd} disabled={todo.length<3} className=' bg-gray-700 hover:bg-gray-950 p-1 py-0 rounded-md '>Save</button>
         </div>
 
         <input onChange={toggleFinished} type="checkbox" checked={showFInished} />Show Finished
-        <div className='font-bold'>
+        <div className='font-bold my-4'>
           <h2>Your Todos</h2>
         </div>
         <div className="todos text-sm m-5 ">
           {todos.length === 0 && <div className=''> No Todos to Display</div>}
           {todos.map(item => {
 
-            return (showFInished || !item.isCompleted) && <div key={item.id} className="todo flex gap-5 w-1/2 justify-between my-2">
+            return (showFInished || !item.isCompleted) && <div key={item.id} className="todo flex gap-5 md:w-3/4 justify-between my-2">
               <div className='flex gap-5'> 
                 <input onChange={handleCheckbox} type="checkbox" checked={item.isCompleted} name={item.id} id="" />
                 <div className={item.isCompleted ? "line-through" : ""} >
